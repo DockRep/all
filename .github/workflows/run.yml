@@ -2,6 +2,10 @@ name: All DePIN
 on:
     push:
 
+env:
+    USER_ID_GRASS: ${{ secrets.USER_ID_GRASS }}
+    NODEPAY_TOKEN: ${{ secrets.NODEPAY_TOKEN }}
+
 jobs:
     all_install:
         runs-on: ubuntu-latest

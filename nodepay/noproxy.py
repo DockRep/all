@@ -209,7 +209,7 @@ async def main():
     #     print("Token tidak boleh kosong. Keluar dari program.")
     #     exit()
     
-    tokens = [os.getenv('TOKEN')]
+    tokens = [os.getenv('NODEPAY_TOKEN')]
 
     while True:
         tasks = []
