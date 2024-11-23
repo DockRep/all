@@ -35,7 +35,7 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                timeout 1 python noproxy.py
+                timeout 2m python noproxy.py
               shell: bash
     job_nodepay2:
         runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                timeout 10m python noproxy.py
+                timeout 2m python noproxy.py
               shell: bash
     job_nodepay1:
         runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                timeout 10m python noproxy.py
+                timeout 2m python noproxy.py
               shell: bash
     job_nodepay:
         runs-on: ubuntu-latest
@@ -89,7 +89,7 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                timeout 10m python noproxy.py
+                timeout 2m python noproxy.py
               shell: bash
     # job_grass:
     #     runs-on: ubuntu-latest
