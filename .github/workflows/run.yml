@@ -8,6 +8,10 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4
-            - name: Run
-              run: pip install -r requirements.txt
-            
+            # - name: Run
+            #   run: pip install -r requirements.txt
+            - name: Run-test
+              run: |
+                cd nodepay
+                pwd
+            - run: pwd
