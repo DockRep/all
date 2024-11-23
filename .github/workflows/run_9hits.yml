@@ -1,11 +1,10 @@
-name: All DePIN
+name: 9HITS
 on:
-    push:
-    status:
+    # push:
     workflow_dispatch:
-    # schedule:
-    # #   - cron: '*/15 * * * *'
-    #   - cron: '* * * * *'
+    schedule:
+    #   - cron: '*/15 * * * *'
+      - cron: '0 0 * * *'
     # schedule:
     #     - cron: '1/2 * * * *'
     # schedule:
@@ -16,45 +15,25 @@ env:
     USER_ID_GRASS: ${{ secrets.USER_ID_GRASS }}
     NODEPAY_TOKEN: ${{ secrets.NODEPAY_TOKEN }}
 
-
+# apt update
 
 jobs:  
-    # job_nodepay3:
-    #     runs-on: ubuntu-latest
-    #     timeout-minutes: 1440
-    #     steps:
-    #         - name: Checkout Code
-    #           uses: actions/checkout@v4
-    #         - name: Nodepay-install
-    #           run: |
-    #             cd nodepay
-    #             python -m venv venv
-    #             source venv/bin/activate
-    #             pip install -r requirements.txt
-    #         - name: Nodepay-run
-    #           run: |
-    #             cd nodepay
-    #             source venv/bin/activate
-    #             timeout 2m python noproxy.py
-    #           shell: bash
-    # job_nodepay2:
-    #     runs-on: ubuntu-latest
-    #     timeout-minutes: 1440
-    #     steps:
-    #         - name: Checkout Code
-    #           uses: actions/checkout@v4
-    #         - name: Nodepay-install
-    #           run: |
-    #             cd nodepay
-    #             python -m venv venv
-    #             source venv/bin/activate
-    #             pip install -r requirements.txt
-    #         - name: Nodepay-run
-    #           run: |
-    #             cd nodepay
-    #             source venv/bin/activate
-    #             timeout 2m python noproxy.py
-    #           shell: bash
+    job_nodepay2:
+        runs-on: ubuntu-latest
+        timeout-minutes: 1440
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            - name: update
+              run: |
+                DIR=$(pwd)
+                wget http://dl.9hits.com/3.0.4/9hitsv3-linux64.tar.bz2
+                tar -xvf 9hitsv3-linux64.tar.bz2
+                cd 9hitsv3-linux64
+                $9HITS_DIR=$(pwd)
+                cp -rf $DIR/9hits/config $9HITS_DIR
+                ./9hits
+
     # job_nodepay1:
     #     runs-on: ubuntu-latest
     #     timeout-minutes: 1440
@@ -73,28 +52,24 @@ jobs:
     #             source venv/bin/activate
     #             timeout 2m python noproxy.py
     #           shell: bash
-    if_error_or_failure:
     # job_nodepay:
-        runs-on: ubuntu-latest
-        timeout-minutes: 1440
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            - name: Nodepay-install
-              run: |
-                cd nodepay
-                python -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
-            - name: Nodepay-run
-              run: |
-                cd nodepay
-                source venv/bin/activate
-                timeout 2m nohup python noproxy.py
-                pwd
-                cd ..
-                pwd
-              shell: bash
+    #     runs-on: ubuntu-latest
+    #     timeout-minutes: 1440
+    #     steps:
+    #         - name: Checkout Code
+    #           uses: actions/checkout@v4
+    #         - name: Nodepay-install
+    #           run: |
+    #             cd nodepay
+    #             python -m venv venv
+    #             source venv/bin/activate
+    #             pip install -r requirements.txt
+    #         - name: Nodepay-run
+    #           run: |
+    #             cd nodepay
+    #             source venv/bin/activate
+    #             timeout 2m python noproxy.py
+    #           shell: bash                
     # job_grass:
     #     runs-on: ubuntu-latest
     #     steps:
