@@ -19,7 +19,62 @@ env:
 
 
 jobs:  
-    job_nodepay3:
+    # job_nodepay3:
+    #     runs-on: ubuntu-latest
+    #     timeout-minutes: 1440
+    #     steps:
+    #         - name: Checkout Code
+    #           uses: actions/checkout@v4
+    #         - name: Nodepay-install
+    #           run: |
+    #             cd nodepay
+    #             python -m venv venv
+    #             source venv/bin/activate
+    #             pip install -r requirements.txt
+    #         - name: Nodepay-run
+    #           run: |
+    #             cd nodepay
+    #             source venv/bin/activate
+    #             timeout 2m python noproxy.py
+    #           shell: bash
+    # job_nodepay2:
+    #     runs-on: ubuntu-latest
+    #     timeout-minutes: 1440
+    #     steps:
+    #         - name: Checkout Code
+    #           uses: actions/checkout@v4
+    #         - name: Nodepay-install
+    #           run: |
+    #             cd nodepay
+    #             python -m venv venv
+    #             source venv/bin/activate
+    #             pip install -r requirements.txt
+    #         - name: Nodepay-run
+    #           run: |
+    #             cd nodepay
+    #             source venv/bin/activate
+    #             timeout 2m python noproxy.py
+    #           shell: bash
+    # job_nodepay1:
+    #     runs-on: ubuntu-latest
+    #     timeout-minutes: 1440
+    #     steps:
+    #         - name: Checkout Code
+    #           uses: actions/checkout@v4
+    #         - name: Nodepay-install
+    #           run: |
+    #             cd nodepay
+    #             python -m venv venv
+    #             source venv/bin/activate
+    #             pip install -r requirements.txt
+    #         - name: Nodepay-run
+    #           run: |
+    #             cd nodepay
+    #             source venv/bin/activate
+    #             timeout 2m python noproxy.py
+    #           shell: bash
+    if_error_or_failure:
+    # job_nodepay:
         runs-on: ubuntu-latest
         timeout-minutes: 1440
         steps:
@@ -35,61 +90,10 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                timeout 2m python noproxy.py
-              shell: bash
-    job_nodepay2:
-        runs-on: ubuntu-latest
-        timeout-minutes: 1440
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            - name: Nodepay-install
-              run: |
-                cd nodepay
-                python -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
-            - name: Nodepay-run
-              run: |
-                cd nodepay
-                source venv/bin/activate
-                timeout 2m python noproxy.py
-              shell: bash
-    job_nodepay1:
-        runs-on: ubuntu-latest
-        timeout-minutes: 1440
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            - name: Nodepay-install
-              run: |
-                cd nodepay
-                python -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
-            - name: Nodepay-run
-              run: |
-                cd nodepay
-                source venv/bin/activate
-                timeout 2m python noproxy.py
-              shell: bash
-    job_nodepay:
-        runs-on: ubuntu-latest
-        timeout-minutes: 1440
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            - name: Nodepay-install
-              run: |
-                cd nodepay
-                python -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
-            - name: Nodepay-run
-              run: |
-                cd nodepay
-                source venv/bin/activate
-                timeout 2m python noproxy.py
+                timeout 2m nohup python noproxy.py
+                pwd
+                cd ..
+                pwd
               shell: bash
     # job_grass:
     #     runs-on: ubuntu-latest
