@@ -1,9 +1,9 @@
 name: All DePIN
 on:
-    push:
+    # push:
     workflow_dispatch:
     schedule:
-        - cron: '* * * * *'
+        - cron: '1/2 * * * *'
     # schedule:
     #     - cron: '0 0 0/24 * * *'
         
