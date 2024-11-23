@@ -7,6 +7,24 @@ env:
     NODEPAY_TOKEN: ${{ secrets.NODEPAY_TOKEN }}
 
 jobs:
+    job_grass:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            # - name: Run
+            #   run: pip install -r requirements.txt
+            - name: Grass-install
+              run: |
+                cd grass
+                python -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+            - name: Grass-run
+              run: |
+                cd grass
+                source venv/bin/activate
+                python grass.py
     all_install:
         runs-on: ubuntu-latest
         steps:
