@@ -8,6 +8,10 @@ import websockets
 from loguru import logger
 from fake_useragent import UserAgent
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 user_agent = UserAgent(os='windows', platforms='pc', browsers='chrome')
 random_user_agent = user_agent.random
 
@@ -70,8 +74,7 @@ async def connect_to_wss(user_id):
 async def main():
     #find user_id on the site in conlose localStorage.getItem('userId') (if you can't get it, write allow pasting)
     # _user_id = input('Please Enter your user ID: ')
-    # _user_id = "decf4f46-e0a0-40f6-9e8c-5a7e8c20ea0c"
-    _user_id = "91527a47-92e1-4e5e-858c-5aa6215c39f9"
+    _user_id = os.getenv('USER_ID_GRASS')
 
     await connect_to_wss(_user_id)
 

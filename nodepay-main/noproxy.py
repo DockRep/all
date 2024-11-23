@@ -5,6 +5,10 @@ import uuid
 import cloudscraper
 from loguru import logger
 from fake_useragent import UserAgent
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def show_warning():
     confirm = input("Dengan menggunakan alat ini berarti Anda memahami risikonya. lakukan dengan risiko Anda sendiri! \nTekan Enter untuk melanjutkan atau Ctrl+C untuk membatalkan... ")
@@ -194,16 +198,18 @@ def remove_proxy_from_list(proxy):
     pass
 
 async def main():
-    try:
-        with open('tokens.txt', 'r') as token_file:
-            tokens = token_file.read().splitlines()
-    except FileNotFoundError:
-        print("File tokens.txt tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
-        exit()
+    # try:
+    #     with open('tokens.txt', 'r') as token_file:
+    #         tokens = token_file.read().splitlines()
+    # except FileNotFoundError:
+    #     print("File tokens.txt tidak ditemukan. Pastikan file tersebut ada di direktori yang benar.")
+    #     exit()
 
-    if not tokens:
-        print("Token tidak boleh kosong. Keluar dari program.")
-        exit()
+    # if not tokens:
+    #     print("Token tidak boleh kosong. Keluar dari program.")
+    #     exit()
+    
+    tokens = [os.getenv('TOKEN')]
 
     while True:
         tasks = []
