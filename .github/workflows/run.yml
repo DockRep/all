@@ -32,7 +32,7 @@ jobs:
               run: |
                 cd nodepay
                 source venv/bin/activate
-                python noproxy.py
+                timeout 2m python noproxy.py
     # job_grass:
     #     runs-on: ubuntu-latest
     #     steps:
